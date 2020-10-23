@@ -1,3 +1,4 @@
+  
 import React, { useContext, useState, useRef } from 'react';
 import gql from 'graphql-tag';
 import { useQuery, useMutation } from '@apollo/react-hooks';
@@ -25,13 +26,13 @@ function SinglePost(props) {
   const [comment, setComment] = useState('');
 
   const {
-    data: { getPost }
-  } = useQuery(FETCH_POST_QUERY, {
-    variables: {
+    data: { getPost } = {}
+  } = useQuery(FETCH_POST_QUERY,{
+    variables:{
       postId
     }
   });
-
+  
   const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
     update() {
       setComment('');
